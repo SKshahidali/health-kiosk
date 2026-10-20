@@ -1,0 +1,38 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin" // Keep this after Android and Kotlin plugins
+}
+
+android {
+    namespace = "com.example.health_kiosk"
+    compileSdk = 34 // Set this explicitly, as flutter.compileSdkVersion can sometimes cause issues
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+
+    defaultConfig {
+        applicationId = "com.example.health_kiosk"
+        minSdk = 21
+        targetSdk = 34
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug // Use debug signing for now, update if you have a release key
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
